@@ -3,14 +3,7 @@
 
 
 <?php include('functions.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
 
-	
 	<div class="row container">
 	
 		<p>&nbsp;</p>
@@ -41,7 +34,5 @@
 		</form>
 	</div>
 
-</body>
-</html>
 
 <?php include_once 'includes/footer.inc.php' ?>

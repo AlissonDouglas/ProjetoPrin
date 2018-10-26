@@ -10,13 +10,10 @@
 		header('location: login.php');
 	}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
+
 	<div class="ligth center">
 		<h5>Home page</h5>
 
@@ -24,18 +21,7 @@
 	<div class="row container">
 			<div class="col s12"> 
 		<hr>
-		<!-- mensagem de notificação -->
-		<?php if (isset($_SESSION['success'])) : ?>
-			<div class="error success" >
-				<h3>
-					<?php 
-						echo $_SESSION['success']; 
-						unset($_SESSION['success']);
-					?>
-				</h3>
-			</div>
-		<?php endif ?>
-
+		
 		<!-- Informações sobre o usuário logado -->
 		
 		<?php  if (isset($_SESSION['user'])) : ?>
@@ -50,7 +36,6 @@
   				
 		</div>
 	</div>	
-</body>
-</html>
+
 <?php include_once 'includes/footer.inc.php' ?>
 

@@ -1,14 +1,9 @@
 <?php include_once 'includes/header.inc.php' ?>
 <?php include_once 'includes/menu.inc.php' ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Eventos</title>
-</head>
-<body>
 
-  
+	<title>Eventos</title>
+
   
 <div class="card small"  style="width: 300px; ">
     <div class="card-image waves-effect waves-block waves-light">
@@ -37,8 +32,6 @@
     </div>
   </div>
 
-</body>
-</html>
 
 
 <?php include_once 'includes/footer.inc.php' ?>

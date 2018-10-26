@@ -2,14 +2,9 @@
 <?php include_once 'includes/menu.inc.php' ?>
 
 <?php include('functions.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
+
 	<title>Área de Registro</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	
+
 	<div class="row container">
 	<p>&nbsp;</p>
 		<form method="post" action="cadastro.php" class="cool s12">
@@ -51,7 +46,6 @@
 			</fieldset>
 		</form>
 	</div>
-</body>
-</html>
+
 
 <?php include_once 'includes/footer.inc.php' ?>

@@ -1,17 +1,9 @@
 <?php include_once 'includes/header.inc.php' ?>
 <?php include_once 'includes/menu.inc.php' ?>
 <?php include('functions.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
+
 	
 	<title>Registration system PHP and MySQL - Create user</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	
-	
-
-</head>
-<body>
 
 	<div class="row container">
 	<p>&nbsp;</p>
@@ -63,6 +55,4 @@
 			</fieldset>
 		</form>
 	</div>
-</body>
-</html
 <?php include_once 'includes/footer.inc.php' ?>
