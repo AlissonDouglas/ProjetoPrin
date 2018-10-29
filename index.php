@@ -1,5 +1,5 @@
 <?php include_once 'includes/header.inc.php' ?>
-<?php include_once 'includes/menu.inc.php' ?>
+<?php include_once 'includes/usermenu.inc.php' ?>
 <?php 		include('functions.php');  		$results = mysqli_query($db, "SELECT * FROM eventos"); ?>
 	
 	<title>Home</title>
@@ -23,8 +23,8 @@
 		<?php endif ?>
 		-->
 
-<form method="post" action="functions.php" class="cool s12" >
-<fieldset class="formulario" style=" padding: 15px;"> 
+	<form method="post" action="index.php" class="cool s12" >
+		<fieldset class="formulario" style=" padding: 15px;"> 
 	
 	
 	<!-- Informações sobre o usuário logado -->
@@ -38,27 +38,27 @@
 			<p> <strong><?php echo $_SESSION['user']['username']; ?></strong></p>
 	<?php endif ?>
 	</legend>
-	<a class="btn red" href="perfiluser.php">PERFIL</a>
+		
 
 	<div class="input-field col s12">
 		<i class="material-icons prefix">short_text</i>
-		<input placeholder="Digite seu texto para pedido de ajuda de custo" type="text" name="texto" >
+		<input placeholder="Digite seu texto para pedido de ajuda de custo" type="text" name="pedido"  >
 	</div>
 
 
 			<div class="input-field col s12 m6">
 				<i class="material-icons prefix">clear_all</i>
 			<label>Eventos disponiveis</label>
-					<select name="evento" id="evento" >
+					<select name="ev" id="ev" >
 					<option></option>
 					<?php while ($row = mysqli_fetch_array($results)) { ?>
-						<option><?php echo $row['title']; ?></option>
+						<option value=""><?php echo $row['title']; ?></option>
 						<?php } ?>
 					</select>
 		</div>
 
 	<div class="input-field col s12">
-			<button class="btn" type="submit" name="save" >Save</button>
+			<button class="btn" type="submit" name="pedidos" >Save</button>
 			<a class="btn red" href="index.php?logout='1'">Sair</a>
 		
 	</div>

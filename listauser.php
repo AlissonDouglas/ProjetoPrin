@@ -17,13 +17,14 @@
 							<th colspan="2">Avaliação</th>
 						</tr>
 					</thead>			
+							<!--PERCORRER A TABELA-->
 							<?php while ($row = mysqli_fetch_array($results)) { ?>
 						<tr>
 							<td><?php echo $row['username']; ?></td>
 							<td><?php echo $row['email']; ?></td>
 							
 <!--INICIO MODAL-->
-							<td><a class="btn-floating green modal-trigger" href="#modal<?php echo $row['id']; ?>"><i class="material-icons">clear_all</i></a></td>
+							<td><a class="btn-floating green modal-trigger" href="#modal<?php echo $row['id']; ?>" ><i class="material-icons">clear_all</i></a></td>
 
 							  <!-- Modal Structure -->
 							  <div id="modal<?php echo $row['id']; ?>" class="modal">
@@ -40,7 +41,8 @@
 								<a  class="del_btn"><label><input type="checkbox" class="filled-in" /><span>Negado</span></label></a>
 							</td>
 						</tr>
-										<?php } ?>
+<!--FIM - PERCORRER-->				<?php } ?>
+					
 					</table>
 			</fieldset>
 		</form>

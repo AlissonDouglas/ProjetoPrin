@@ -2,14 +2,9 @@
 <?php include_once 'includes/usermenu.inc.php' ?>
 
 <?php include('functions.php') ?>
-<!DOCTYPE html>
-<html>
-<head>
+
 	<title>Perfil</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<meta charset="UTF-8"> 
-</head>
-<body>
+
 	<?php 
 
 			$sql = "SELECT * FROM user";
@@ -83,6 +78,4 @@
 		
 	</div>
 <?php } ?>
-</body>
-</html>
 <?php include_once 'includes/footer.inc.php' ?>

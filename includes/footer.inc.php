@@ -15,6 +15,8 @@
 	$(document).ready(function(){
     $('select').formSelect();
   });
-</script>
+
+ 	 M.AutoInit();
+ </script>
 </body>
 </html>
