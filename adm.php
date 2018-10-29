@@ -39,38 +39,11 @@
 						<button class="btn blue waves-effect waves-light" type="submit" onClick="Nova()">Cadastrar ADM
 			   			 <i class="material-icons right">add_circle</i>
 			  			</button>
-			  			
+			  			<a href="listauser.php" class="btn black">listar</a>
+			  			<a href="addevento.php" class="btn green">Adicionar Evento</a>
+						<input type="button" value="Voltar" onClick="history.go(-1)"> 
 					</small>
-
-
-
 <br>
-		<?php $results = mysqli_query($db, "SELECT * FROM users"); ?>
-		<table class="striped ">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Email</th>
-					<th colspan="2">Avaliação</th>
-				</tr>
-			</thead>
-	
-		<?php while ($row = mysqli_fetch_array($results)) { ?>
-			<tr>
-				<td><?php echo $row['username']; ?></td>
-				<td><?php echo $row['email']; ?></td>
-				<td>
-					<a href="index.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><label><input type="checkbox" class="filled-in"  /><span>Aceito</span></label></a>
-				</td>
-				<td>
-					<a href="server.php?del=<?php echo $row['id']; ?>" class="del_btn"><label><input type="checkbox" class="filled-in" /><span>Negado</span></label></a>
-				</td>
-				</tr>
-				<?php } ?>
-			</table>
-
-
-			
 				<?php endif ?>
 			</div>
 			

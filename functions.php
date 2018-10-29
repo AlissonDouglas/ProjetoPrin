@@ -4,11 +4,28 @@
 	// connect to database
 	$db = mysqli_connect('localhost', 'root', '', 'registration');
 
+	
+	
 	// declarando variaveis
-	$username = "";
+	$matricula = "";
+	$nivel = "";
+	$cpf = "";
+	$nome = "";
+	$rg = "";
+	$datanasc = "";
 	$email    = "";
-	$errors   = array(); 
+	$username = "";
+	$tipo = "";
+	$errors   = array();
 
+	$name = "";
+	$address = "";
+	$id = 0;
+	$update = false; 
+	
+	$title	="";
+	$descricao = "";
+	
 	// chamar a função register () se register_btn for click
 	if (isset($_POST['register_btn'])) {
 		register();
@@ -22,57 +39,83 @@
 	if (isset($_GET['logout'])) {
 		session_destroy();
 		unset($_SESSION['user']);
-		header("location: ../login.php");
+		header("location: login.php");
+	}
+
+	if (isset($_POST['save'])){
+		save();
+	}
+	
+	function save(){
+		global $db, $errors;
+		
+		$title = e($_POST['title']);
+		$descricao = e($_POST['descricao']);
+		
+		if (count($errors)== 0){
+		$query = "INSERT INTO eventos (title, description) VALUES('$title', '$descricao')";
+		mysqli_query($db, $query);
+		}
 	}
 
 	// REGISTER USER
-	function register(){
-		global $db, $errors;
+	function register() {
+		global $db, $errors, $tipo;
+		$tipo = 'user';
 
 		// recebe todos os valores de entrada do formulário
-		$username    =  e($_POST['username']);
+		$matricula       =  e($_POST['matricula']);
+		$nivel       =  e($_POST['nivel']);
+		$cpf       =  e($_POST['cpf']);
+		$nome       =  e($_POST['nome']);
+		$rg       =  e($_POST['rg']);
+		$datanasc       =  e($_POST['datanasc']);
 		$email       =  e($_POST['email']);
+		$username    =  e($_POST['username']);
 		$password_1  =  e($_POST['password_1']);
 		$password_2  =  e($_POST['password_2']);
 
 		// validação de formulário: verifique se o formulário está preenchido corretamente
-		if (empty($username)) { 
-			array_push($errors, "É necessário um Nome"); 
+		if (empty($matricula)) { 
+			array_push($errors, "Campo de preenchimento obrigatório"); 
+		}
+		if (empty($cpf)) { 
+			array_push($errors, "Campo de preenchimento obrigatório"); 
+		}
+		if (empty($nome)) { 
+			array_push($errors, "Campo de preenchimento obrigatório"); 
+		}
+		if (empty($rg)) { 
+			array_push($errors, "Campo de preenchimento obrigatório");
+		}
+		if (empty($datanasc)) {
+			array_push($errors, "Campo de preenchimento obrigatório");
 		}
 		if (empty($email)) { 
-			array_push($errors, "É necessário um Email"); 
+			array_push($errors, "Campo de preenchimento obrigatório");
+		}
+		if (empty($username)) { 
+			array_push($errors, "Campo de preenchimento obrigatório");
 		}
 		if (empty($password_1)) { 
-			array_push($errors, "É necessário uma Senha"); 
+			array_push($errors, "Campo de preenchimento obrigatório");
 		}
 		if ($password_1 != $password_2) {
-			array_push($errors, "As senhas não combinam.");
+			array_push($errors, "As senha não coincidem");
 		}
 
 		// registrar usuário se não houver erros no formulário
 		if (count($errors) == 0) {
 			$password = md5($password_1);//criptografar a senha antes de salvar no banco de dados
+			$query = "INSERT INTO user (matricula, cpf, nome, rg, datanasc, email, username, password) VALUES ('$matricula', '$nivel', '$cpf', '$nome', '$rg','$datanasc', '$email', '$username', '$password')";
+			mysqli_query($db, $query);
+			// obtenha o id do usuário criado
+			$logged_in_user_id = mysqli_insert_id($db);
 
-			if (isset($_POST['user_type'])) {
-				$user_type = e($_POST['user_type']);
-				$query = "INSERT INTO users (username, email, user_type, password) VALUES('$username', '$email', '$user_type', '$password')";
-				mysqli_query($db, $query);
-				$_SESSION['success']  = "Novo usuário criado com sucesso !!";
-				header('location: adm.php');
-			}else{
-				$query = "INSERT INTO users (username, email, user_type, password) VALUES('$username', '$email', 'user', '$password')";
-				mysqli_query($db, $query);
-
-				// obtenha o id do usuário criado
-				$logged_in_user_id = mysqli_insert_id($db);
-
-				$_SESSION['user'] = getUserById($logged_in_user_id); // colocar usuário logado na sessão
-				$_SESSION['success']  = "Agora você está logado";
-				header('location: index.php');				
-			}
-
+			$_SESSION['user'] = getUserById($logged_in_user_id); // colocar usuário logado na sessão
+			$_SESSION['success']  = "Agora você está logado";
+			header('location: eventos.php');
 		}
-
 	}
 
 	// Retorna a matriz do usuário de seu id

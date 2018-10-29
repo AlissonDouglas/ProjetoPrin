@@ -1,37 +1,69 @@
 <?php include_once 'includes/header.inc.php' ?>
 <?php include_once 'includes/menu.inc.php' ?>
-
-
-<?php 
-	include('functions.php');
-
-	if (!isLoggedIn()) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: login.php');
-	}
-?>
-
+<?php 		include('functions.php');  		$results = mysqli_query($db, "SELECT * FROM eventos"); ?>
+	
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-
 	<div class="ligth center">
 		<h5>Home page</h5>
 
 	</div>
 	<div class="row container">
 			<div class="col s12"> 
-		<hr>
 		
-		<!-- Informações sobre o usuário logado -->
-		
-		<?php  if (isset($_SESSION['user'])) : ?>
-			<p>Bem-vindo <strong><?php echo $_SESSION['user']['username']; ?></strong></p>
-			<small>
-				<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> 
-				<br>
-				<a href="index.php?logout='1'" style="color: red;">Sair</a>
-			</small>
+		<!-- mensagem de notificação 
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php 
+						echo $_SESSION['success']; 
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
 		<?php endif ?>
+		-->
+
+<form method="post" action="functions.php" class="cool s12" >
+<fieldset class="formulario" style=" padding: 15px;"> 
+	
+	
+	<!-- Informações sobre o usuário logado -->
+		
+			<small>
+				<!--<i  style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i> -->
+			</small>
+			<legend>
+
+		<img src="imagens/avatar.png" alt="[imagem]" width="50" <?php  if (isset($_SESSION['user'])) : ?>
+			<p> <strong><?php echo $_SESSION['user']['username']; ?></strong></p>
+	<?php endif ?>
+	</legend>
+	<a class="btn red" href="perfiluser.php">PERFIL</a>
+
+	<div class="input-field col s12">
+		<i class="material-icons prefix">short_text</i>
+		<input placeholder="Digite seu texto para pedido de ajuda de custo" type="text" name="texto" >
+	</div>
+
+
+			<div class="input-field col s12 m6">
+				<i class="material-icons prefix">clear_all</i>
+			<label>Eventos disponiveis</label>
+					<select name="evento" id="evento" >
+					<option></option>
+					<?php while ($row = mysqli_fetch_array($results)) { ?>
+						<option><?php echo $row['title']; ?></option>
+						<?php } ?>
+					</select>
+		</div>
+
+	<div class="input-field col s12">
+			<button class="btn" type="submit" name="save" >Save</button>
+			<a class="btn red" href="index.php?logout='1'">Sair</a>
+		
+	</div>
+
+</form>
 		
   				
 		</div>

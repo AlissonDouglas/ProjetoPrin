@@ -3,7 +3,7 @@
 <?php include('functions.php') ?>
 
 	
-	<title>Registration system PHP and MySQL - Create user</title>
+	<title>Create user</title>
 
 	<div class="row container">
 	<p>&nbsp;</p>
@@ -42,9 +42,7 @@
 				<i class="material-icons prefix">clear_all</i>
 			<label>Tipo de usuário</label>
 			<select name="user_type" id="user_type" >
-				<option value=""></option>
 				<option value="admin">Admin</option>
-				<option value="user">Cliente</option>
 			</select>
 		</div>
 		
