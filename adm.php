@@ -1,5 +1,5 @@
 <?php include_once 'includes/header.inc.php' ?>
-<?php include_once 'includes/menu.inc.php' ?>
+<?php include_once 'includes/menuadmin.inc.php' ?>
 
 <?php 
 	include('functions.php');
@@ -33,15 +33,10 @@
 					<br>
 					
 						<small>
-						<a href="index.php?logout='1'" class="btn red">Sair</a>
+						
 						&nbsp;						
 						<div class="input-field col s12"></div>
-						<button class="btn blue waves-effect waves-light" type="submit" onClick="Nova()">Cadastrar ADM
-			   			 <i class="material-icons right">add_circle</i>
-			  			</button>
-			  			<a href="listauser.php" class="btn black">listar</a>
-			  			<a href="addevento.php" class="btn green">Adicionar Evento</a>
-						<input type="button" value="Voltar" onClick="history.go(-1)"> 
+			  			<a href="addevento.php" class="btn green">Add evento</a>
 					</small>
 <br>
 				<?php endif ?>

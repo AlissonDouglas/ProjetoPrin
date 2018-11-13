@@ -72,7 +72,7 @@
 			<button class="btn blue waves-effect waves-light" type="submit"  name="">Editar
    			 <i class="material-icons right">send</i>
   			</button>
-			<input type="reset" value="Limpar" class="btn red">
+			
 		
 				</fieldset>
 		

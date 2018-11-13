@@ -1,7 +1,7 @@
 <?php include_once 'includes/header.inc.php' ?>
-<?php include_once 'includes/menu.inc.php' ?>
+<?php include_once 'includes/menuadmin.inc.php' ?>
 
-<?php 		include('functions.php');  		$results = mysqli_query($db, "SELECT * FROM users"); ?>
+<?php 		include('functions.php');  		$results = mysqli_query($db, "SELECT * FROM user"); ?>
 	<p>&nbsp;</p>
 
 	<div class="row container">

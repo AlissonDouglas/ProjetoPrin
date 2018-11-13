@@ -1,9 +1,11 @@
 <hmtl>
-	<form action="teste_cadastro-evento.php" method="post" />
+	<form action="teste_cadastro-evento.php" method="post" enctype="multipart/form-data"/>
 		<input type="hidden" name="codigo"/>
 		Imagem <input type="file" required name="image"/> <br/>
 		Titulo <input type="text" name="title"/> <br/>
+		Data <input type="date" name="date"/> <br/>
+		Hora <input type="time" name="hora"/> <br/>
 		Descricao <input type="text" name="description"/> <br/>
-		<input type="submit" name="btn">
+		<input type="submit">
 	</form>
 </hmtl>

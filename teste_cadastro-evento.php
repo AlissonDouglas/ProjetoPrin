@@ -11,12 +11,10 @@ if(!$con){
 $codigo = $_POST['codigo'];
 $imagem = $_FILES['image'];
 $titulo = $_POST['title'];
+$data = $_POST["date"];
+$hora = $_POST["hora"];
 $descricao = $_POST['description'];
-	
 
-	if (isset($_POST['btn'])){
-		evento();
-	}
 // Se a foto estiver sido selecionada
 	if (!empty($imagem["name"])) {
 		
@@ -30,7 +28,7 @@ $descricao = $_POST['description'];
 		$error = array();
  
     	// Verifica se o arquivo é uma imagem
-    	if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $imagem["type"])){
+    	if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp|jpg)$/", $imagem["type"])){
      	   $error[1] = "Isso não é uma imagem.";
    	 	} 
 	
@@ -66,16 +64,21 @@ $descricao = $_POST['description'];
  
 			// Faz o upload da imagem para seu respectivo caminho
 			move_uploaded_file($imagem["tmp_name"], $caminho_imagem);
-			function evento(){
+
+		
 			// Insere os dados no banco
-			$query = "INSERT INTO eventos (codigo, image, title, description) VALUES ('$codigo', '$nome_imagem', '$titulo','$descricao')");
-			mysqli_query($db, $query);
+			$sql = mysqli_query($con, "INSERT INTO eventos (codigo, image, title, data, hora, description) VALUES ('$codigo', '$nome_imagem', '$titulo', '$data', '$hora', '$descricao')");
+		
 			// Se os dados forem inseridos com sucesso
 			if ($sql){
 				echo "Evento adicionado com sucesso.";
+				header('location: eventos.php');
+			}
+			else {
+				echo "ERRO";
 			}
 		}
-	}		
+	
 		// Se houver mensagens de erro, exibe-as
 		if (count($error) != 0) {
 			foreach ($error as $erro) {
